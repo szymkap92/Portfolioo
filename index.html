@@ -1,487 +1,310 @@
 <!DOCTYPE html>
 <html lang="pl">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Szymon Kaput - Cybersecurity & System Administrator</title>
-		<meta
-			name="description"
-			content="Portfolio Szymona Kaputa - student informatyki, specjalista cyberbezpieczeństwa, administracji systemów Linux/Windows i sieci komputerowych"
-		/>
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap"
-			rel="stylesheet"
-		/>
-		<link rel="stylesheet" href="styles.css" />
-	</head>
-	<body>
-		<div class="cursor-glow"></div>
-		<div class="matrix-bg"></div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Szymon Kaput - Student informatyki specjalizujący się w cyberbezpieczeństwie. Portfolio, umiejętności i kontakt.">
+    <meta name="keywords" content="Szymon Kaput, cyberbezpieczeństwo, informatyka, Python, Linux, portfolio">
+    <meta name="author" content="Szymon Kaput">
+    <title>Szymon Kaput - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="#home">Szymon Kaput</a>
+                </div>
+                <div class="nav-menu">
+                    <a href="#home" class="nav-link" data-lang-key="nav.home">Home</a>
+                    <a href="#skills" class="nav-link" data-lang-key="nav.skills">Umiejętności</a>
+                    <a href="#projects" class="nav-link" data-lang-key="nav.projects">Projekty</a>
+                    <a href="#about" class="nav-link" data-lang-key="nav.about">O mnie</a>
+                    <a href="#blog" class="nav-link" data-lang-key="nav.blog">Blog</a>
+                    <a href="#contact" class="nav-link" data-lang-key="nav.contact">Kontakt</a>
+                </div>
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang="pl">PL</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="de">DE</button>
+                    <button class="lang-btn" data-lang="es">ESP</button>
+                </div>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-		<!-- Navigation -->
-		<nav class="navbar">
-			<div class="nav-container">
-				<a href="#home" class="nav-brand">
-					<span class="brand-text">SK</span>
-					<div class="brand-pulse"></div>
-				</a>
-				<div class="nav-menu">
-					<a href="#home" class="nav-link active">Home</a>
-					<a href="#about" class="nav-link">About</a>
-					<a href="#skills" class="nav-link">Skills</a>
-					<a href="#projects" class="nav-link">Projects</a>
-					<a href="#contact" class="nav-link">Contact</a>
-					<div class="language-selector">
-						<div class="lang-toggle">
-							<span class="lang-icon">🌐</span>
-							<span class="current-lang">PL</span>
-						</div>
-						<div class="lang-dropdown">
-							<a href="index.html" class="lang-option active">
-								<span class="flag">🇵🇱</span>
-								<span>Polski</span>
-							</a>
-							<a href="index-en.html" class="lang-option">
-								<span class="flag">🇺🇸</span>
-								<span>English</span>
-							</a>
-							<a href="index-de.html" class="lang-option">
-								<span class="flag">🇩🇪</span>
-								<span>Deutsch</span>
-							</a>
-						</div>
-					</div>
-				</div>
-				<div class="nav-toggle">
-					<span></span>
-					<span></span>
-					<span></span>
-				</div>
-			</div>
-		</nav>
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="hero-image">
+                        <img src="img/portfolio.jpg" alt="Szymon Kaput" class="profile-image">
+                    </div>
+                    <div class="hero-text">
+                        <h1 data-lang-key="hero.title">Cześć, jestem Szymon Kaput</h1>
+                        <h2 data-lang-key="hero.subtitle">Student informatyki specjalizujący się w cyberbezpieczeństwie</h2>
+                        <p data-lang-key="hero.description">Pasjonuje się nowymi technologiami, sieciami komputerowymi i bezpieczeństwem systemów. Aktualnie kończę studia inżynierskie i planuję kontynuować naukę na PJATK.</p>
+                        <div class="hero-buttons">
+                            <a href="#projects" class="btn btn-primary" data-lang-key="hero.portfolio">Sprawdź portfolio</a>
+                            <a href="#contact" class="btn btn-secondary" data-lang-key="hero.contact">Skontaktuj się</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-		<!-- Hero Section -->
-		<section id="home" class="hero">
-			<div class="hero-container">
-				<div class="hero-content">
-					<div class="hero-text">
-						<div class="glitch-text" data-text="SZYMON KAPUT">SZYMON KAPUT</div>
-						<h2 class="hero-subtitle">
-							<span class="typing-text"
-								>Cybersecurity & Systems Administration Specialist</span
-							>
-							<span class="cursor">|</span>
-						</h2>
-						<p class="hero-description">
-							Specjalizuję się w cyberbezpieczeństwie, administracji systemów Linux/Windows
-							i zarządzaniu infrastrukturą sieciową. Student informatyki 
-							na specjalizacji Cyberbezpieczeństwo.
-						</p>
-						<div class="hero-buttons">
-							<a href="#projects" class="btn btn-primary">
-								<span>Zobacz Projekty</span>
-								<div class="btn-glow"></div>
-							</a>
-							<a href="#contact" class="btn btn-secondary">
-								<span>Kontakt</span>
-								<div class="btn-scan"></div>
-							</a>
-						</div>
-					</div>
-					<div class="hero-visual">
-						<div class="terminal-window">
-							<div class="terminal-header">
-								<div class="terminal-controls">
-									<span class="control red"></span>
-									<span class="control yellow"></span>
-									<span class="control green"></span>
-								</div>
-								<div class="terminal-title">szymon@portfolio:~$</div>
-							</div>
-							<div class="terminal-body">
-								<div class="terminal-line">
-									<span class="prompt">szymon@dev:~$</span>
-									<span class="command typing">whoami</span>
-								</div>
-								<div class="terminal-output">
-									<div class="output-line delay-1">Cybersecurity Specialist</div>
-									<div class="output-line delay-2">Linux/Windows Administrator</div>
-									<div class="output-line delay-3">Network Engineer</div>
-								</div>
-								<div class="terminal-line">
-									<span class="prompt">szymon@dev:~$</span>
-									<span class="cursor-terminal">_</span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="hero-particles"></div>
-			</div>
-		</section>
+        <!-- Skills Section -->
+        <section id="skills" class="skills">
+            <div class="container">
+                <h2 class="section-title" data-lang-key="skills.title">Umiejętności</h2>
+                <div class="skills-categories">
+                    <!-- Programming Languages -->
+                    <div class="skills-category">
+                        <h3 class="category-title" data-lang-key="skills.category.programming">Języki programowania</h3>
+                        <div class="skills-grid">
+                            <div class="skill-item">
+                                <i class="fab fa-python"></i>
+                                <h3>Python</h3>
+                                <p data-lang-key="skills.python">Programowanie w Pythonie, automatyzacja, skrypty bezpieczeństwa</p>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-code"></i>
+                                <h3>C#</h3>
+                                <p data-lang-key="skills.csharp">Programowanie w C#, .NET Framework, aplikacje desktopowe</p>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-php"></i>
+                                <h3>PHP</h3>
+                                <p data-lang-key="skills.php">Tworzenie aplikacji webowych, Laravel, bezpieczne kodowanie</p>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-js"></i>
+                                <h3>JavaScript</h3>
+                                <p data-lang-key="skills.js">Tworzenie interaktywnych stron, Node.js, React</p>
+                            </div>
+                        </div>
+                    </div>
 
-		<!-- About Section -->
-		<section id="about" class="about">
-			<div class="container">
-				<div class="section-header">
-					<h2 class="section-title">O mnie</h2>
-					<div class="section-line"></div>
-				</div>
-				<div class="about-content">
-					<div class="about-text">
-						<div class="about-card">
-							<div class="card-header">
-								<h3>Student Informatyki</h3>
-								<div class="status-indicator">
-									<div class="status-dot active"></div>
-									<span>VI semestr</span>
-								</div>
-							</div>
-							<p>
-								Studiuję informatykę na specjalizacji
-								<strong>Cyberbezpieczeństwo</strong>. Specjalizuję się w
-								administracji systemów Linux/Windows, bezpieczeństwie sieci
-								i infrastruktury IT.
-							</p>
-						</div>
-						<div class="about-card">
-							<div class="card-header">
-								<h3>Doświadczenie Zawodowe</h3>
-								<div class="company-logo">Audi AG</div>
-							</div>
-							<p>
-								Obecnie pracuję w <strong>Audi AG</strong>, gdzie rozwijam swoje
-								umiejętności w zakresie technologii i pracy w zespole na
-								projektach enterprise.
-							</p>
-						</div>
-						<div class="about-stats">
-							<div class="stat">
-								<div class="stat-number" data-count="6">0</div>
-								<div class="stat-label">Semestr studiów</div>
-							</div>
-							<div class="stat">
-								<div class="stat-number" data-count="10">0</div>
-								<div class="stat-label">Technologii</div>
-							</div>
-							<div class="stat">
-								<div class="stat-number" data-count="5">0</div>
-								<div class="stat-label">Projektów</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+                    <!-- Frontend & Design -->
+                    <div class="skills-category">
+                        <h3 class="category-title" data-lang-key="skills.category.frontend">Frontend & Design</h3>
+                        <div class="skills-grid">
+                            <div class="skill-item">
+                                <i class="fab fa-html5"></i>
+                                <h3 data-lang-key="skills.webtech.title">HTML5 / CSS3 / Tailwind</h3>
+                                <p data-lang-key="skills.webtech.desc">Nowoczesne technologie webowe, responsywny design</p>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-paint-brush"></i>
+                                <h3 data-lang-key="skills.frontend.title">Frontend / UX</h3>
+                                <p data-lang-key="skills.frontend.desc">Projektowanie interfejsów użytkownika, doświadczenie użytkownika</p>
+                            </div>
+                        </div>
+                    </div>
 
-		<!-- Skills Section -->
-		<section id="skills" class="skills">
-			<div class="container">
-				<div class="section-header">
-					<h2 class="section-title">Umiejętności</h2>
-					<div class="section-line"></div>
-				</div>
-				<div class="skills-grid">
-					<div class="skill-category">
-						<h3 class="category-title">
-							<i class="icon-security"></i>
-							Cyberbezpieczeństwo
-						</h3>
-						<div class="cybersec-skills">
-							<div class="cybersec-item">
-								<div class="cybersec-icon">🛡️</div>
-								<div class="cybersec-text">
-									<h4>Bezpieczeństwo Aplikacji</h4>
-									<p>OWASP, penetration testing, secure coding</p>
-								</div>
-							</div>
-							<div class="cybersec-item">
-								<div class="cybersec-icon">🔐</div>
-								<div class="cybersec-text">
-									<h4>Kryptografia</h4>
-									<p>Szyfrowanie, hashing, certyfikaty cyfrowe</p>
-								</div>
-							</div>
-							<div class="cybersec-item">
-								<div class="cybersec-icon">🌐</div>
-								<div class="cybersec-text">
-									<h4>Bezpieczeństwo Sieci</h4>
-									<p>Firewalle, IDS/IPS, analiza ruchu</p>
-								</div>
-							</div>
-						</div>
-					</div>
+                    <!-- Systems & Infrastructure -->
+                    <div class="skills-category">
+                        <h3 class="category-title" data-lang-key="skills.category.systems">Systemy & Infrastruktura</h3>
+                        <div class="skills-grid">
+                            <div class="skill-item">
+                                <i class="fab fa-linux"></i>
+                                <h3>Linux</h3>
+                                <p data-lang-key="skills.linux">Administracja systemami Linux, bash scripting, konfiguracja serwerów</p>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-windows"></i>
+                                <h3>Windows</h3>
+                                <p data-lang-key="skills.windows">Systemy Windows, Active Directory, PowerShell</p>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-network-wired"></i>
+                                <h3 data-lang-key="skills.networking.title">Sieci komputerowe</h3>
+                                <p data-lang-key="skills.networking.desc">Konfiguracja sieci, protokoły, bezpieczeństwo sieciowe</p>
+                            </div>
+                        </div>
+                    </div>
 
-					<div class="skill-category">
-						<h3 class="category-title">
-							<i class="icon-tools"></i>
-							Administracja Systemów
-						</h3>
-						<div class="skills-list">
-							<div class="skill-item">
-								<div class="skill-name">Linux Administration</div>
-								<div class="skill-bar">
-									<div class="skill-progress" data-width="90"></div>
-								</div>
-							</div>
-							<div class="skill-item">
-								<div class="skill-name">Windows Server</div>
-								<div class="skill-bar">
-									<div class="skill-progress" data-width="85"></div>
-								</div>
-							</div>
-							<div class="skill-item">
-								<div class="skill-name">Active Directory</div>
-								<div class="skill-bar">
-									<div class="skill-progress" data-width="80"></div>
-								</div>
-							</div>
-							<div class="skill-item">
-								<div class="skill-name">PowerShell/Bash</div>
-								<div class="skill-bar">
-									<div class="skill-progress" data-width="85"></div>
-								</div>
-							</div>
-						</div>
-					</div>
+                    <!-- Databases -->
+                    <div class="skills-category">
+                        <h3 class="category-title" data-lang-key="skills.category.databases">Bazy danych</h3>
+                        <div class="skills-grid">
+                            <div class="skill-item">
+                                <i class="fas fa-database"></i>
+                                <h3 data-lang-key="skills.sql.title">SQL</h3>
+                                <p data-lang-key="skills.sql.desc">MySQL, PostgreSQL - relacyjne bazy danych</p>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-server"></i>
+                                <h3 data-lang-key="skills.nosql.title">NoSQL</h3>
+                                <p data-lang-key="skills.nosql.desc">MongoDB, Redis - nierelacyjne bazy danych</p>
+                            </div>
+                        </div>
+                    </div>
 
-					<div class="skill-category">
-						<h3 class="category-title">
-							<i class="icon-web"></i>
-							Sieci Komputerowe
-						</h3>
-						<div class="skills-list">
-							<div class="skill-item">
-								<div class="skill-name">TCP/IP, Routing</div>
-								<div class="skill-bar">
-									<div class="skill-progress" data-width="85"></div>
-								</div>
-							</div>
-							<div class="skill-item">
-								<div class="skill-name">VPN, VLAN</div>
-								<div class="skill-bar">
-									<div class="skill-progress" data-width="80"></div>
-								</div>
-							</div>
-							<div class="skill-item">
-								<div class="skill-name">DNS, DHCP</div>
-								<div class="skill-bar">
-									<div class="skill-progress" data-width="85"></div>
-								</div>
-							</div>
-							<div class="skill-item">
-								<div class="skill-name">Wireshark, Nmap</div>
-								<div class="skill-bar">
-									<div class="skill-progress" data-width="75"></div>
-								</div>
-							</div>
-						</div>
-					</div>
+                    <!-- DevOps & Tools -->
+                    <div class="skills-category">
+                        <h3 class="category-title" data-lang-key="skills.category.devops">DevOps & Narzędzia</h3>
+                        <div class="skills-grid">
+                            <div class="skill-item">
+                                <i class="fab fa-docker"></i>
+                                <h3>Docker</h3>
+                                <p data-lang-key="skills.docker">Konteneryzacja aplikacji, orkiestracja, CI/CD</p>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-cogs"></i>
+                                <h3 data-lang-key="skills.cicd.title">CI/CD</h3>
+                                <p data-lang-key="skills.cicd.desc">GitHub Actions, GitLab CI, Jenkins - automatyzacja wdrożeń</p>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-git-alt"></i>
+                                <h3>Git</h3>
+                                <p data-lang-key="skills.git">Kontrola wersji, GitHub, collaborative development</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-					<div class="skill-category">
-						<h3 class="category-title">
-							<i class="icon-code"></i>
-							Programowanie (Dodatkowe)
-						</h3>
-						<div class="skills-tags">
-							<span class="skill-tag">Python</span>
-							<span class="skill-tag">PowerShell</span>
-							<span class="skill-tag">Bash</span>
-							<span class="skill-tag">C#</span>
-							<span class="skill-tag">JavaScript</span>
-							<span class="skill-tag">SQL</span>
-							<span class="skill-tag">HTML/CSS</span>
-							<span class="skill-tag">Git</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+        <!-- Projects Section -->
+        <section id="projects" class="projects">
+            <div class="container">
+                <h2 class="section-title" data-lang-key="projects.title">Projekty</h2>
+                <div class="projects-grid" id="projects-container">
+                    <!-- Projects will be loaded dynamically from GitHub -->
+                    <div class="project-loading">
+                        <p data-lang-key="projects.loading">Ładowanie projektów z GitHub...</p>
+                    </div>
+                </div>
+                <div class="projects-link">
+                    <a href="https://github.com/szymkap92" target="_blank" class="btn btn-primary" data-lang-key="projects.github">Zobacz więcej na GitHub</a>
+                </div>
+            </div>
+        </section>
 
-		<!-- Projects Section -->
-		<section id="projects" class="projects">
-			<div class="container">
-				<div class="section-header">
-					<h2 class="section-title">Projekty</h2>
-					<div class="section-line"></div>
-				</div>
-				<div class="projects-grid">
-					<div class="project-card">
-						<div class="project-header">
-							<h3 class="project-title">DiveCenter</h3>
-							<div class="project-status">
-								<div class="status-dot completed"></div>
-								<span>Completed</span>
-							</div>
-						</div>
-						<p class="project-description">
-							Aplikacja webowa do zarządzania centrami nurkowania. System
-							umożliwia zarządzanie kursami, instruktorami i rezerwacjami.
-						</p>
-						<div class="project-tech">
-							<span class="tech-tag">C#</span>
-							<span class="tech-tag">.NET</span>
-							<span class="tech-tag">Entity Framework</span>
-							<span class="tech-tag">SQL Server</span>
-						</div>
-						<div class="project-links">
-							<a
-								href="https://github.com/szymkap92"
-								class="project-link"
-								target="_blank"
-							>
-								<span>GitHub</span>
-								<div class="link-arrow">→</div>
-							</a>
-						</div>
-						<div class="project-glow"></div>
-					</div>
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <h2 class="section-title" data-lang-key="about.title">O mnie</h2>
+                <div class="about-content">
+                    <div class="about-image">
+                        <img src="img/portfolio2.jpg" alt="Szymon Kaput - dodatkowe zdjęcie">
+                    </div>
+                    <div class="about-text">
+                        <p data-lang-key="about.intro">Student informatyki na ostatnim roku studiów inżynierskich, specjalizujący się w cyberbezpieczeństwie.</p>
+                        <p data-lang-key="about.passion">Zainteresowanie IT towarzyszyło mi od dziecka. Fascynuje mnie świat technologii, bezpieczeństwa systemów i sieci komputerowych.</p>
+                        <p data-lang-key="about.future">Planuję kontynuować naukę na Polsko-Japońskiej Akademii Technik Komputerowych (PJATK), aby pogłębić swoją wiedzę w dziedzinie cyberbezpieczeństwa.</p>
+                        <p data-lang-key="about.personal">Prywatnie jestem pasjonatem sportu, nowych technologii i narzędzi, które mogą pomóc w codziennej pracy i rozwoju osobistym.</p>
+                        <a href="about.html" target="_blank" class="btn btn-primary" data-lang-key="about.more">Dowiedz się więcej</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-					<div class="project-card">
-						<div class="project-header">
-							<h3 class="project-title">Portfolio Website</h3>
-							<div class="project-status">
-								<div class="status-dot active"></div>
-								<span>Active</span>
-							</div>
-						</div>
-						<p class="project-description">
-							Nowoczesna strona portfolio z animacjami i efektami cyberpunk.
-							Responsywna strona z zaawansowanymi animacjami CSS i JavaScript.
-						</p>
-						<div class="project-tech">
-							<span class="tech-tag">HTML5</span>
-							<span class="tech-tag">CSS3</span>
-							<span class="tech-tag">JavaScript</span>
-							<span class="tech-tag">TypeScript</span>
-						</div>
-						<div class="project-links">
-							<a href="#" class="project-link">
-								<span>Live Demo</span>
-								<div class="link-arrow">→</div>
-							</a>
-						</div>
-						<div class="project-glow"></div>
-					</div>
+        <!-- Blog Section -->
+        <section id="blog" class="blog">
+            <div class="container">
+                <h2 class="section-title" data-lang-key="blog.title">Blog</h2>
+                <div class="blog-preview">
+                    <div class="blog-post">
+                        <h3 data-lang-key="blog.post1.title">Wprowadzenie do cyberbezpieczeństwa</h3>
+                        <p class="blog-date">2024-01-15</p>
+                        <p data-lang-key="blog.post1.excerpt">Podstawowe pojęcia i narzędzia w dziedzinie cyberbezpieczeństwa...</p>
+                    </div>
+                    <div class="blog-post">
+                        <h3 data-lang-key="blog.post2.title">Python w automatyzacji zadań</h3>
+                        <p class="blog-date">2024-01-10</p>
+                        <p data-lang-key="blog.post2.excerpt">Jak wykorzystać Python do automatyzacji codziennych zadań...</p>
+                    </div>
+                    <div class="blog-post">
+                        <h3 data-lang-key="blog.post3.title">Bezpieczeństwo sieci - podstawy</h3>
+                        <p class="blog-date">2024-01-05</p>
+                        <p data-lang-key="blog.post3.excerpt">Wprowadzenie do zabezpieczania sieci komputerowych...</p>
+                    </div>
+                </div>
+                <div class="blog-link">
+                    <a href="blog.html" target="_blank" class="btn btn-primary" data-lang-key="blog.all">Zobacz wszystkie wpisy</a>
+                </div>
+            </div>
+        </section>
 
-					<div class="project-card coming-soon">
-						<div class="project-header">
-							<h3 class="project-title">Security Scanner</h3>
-							<div class="project-status">
-								<div class="status-dot pending"></div>
-								<span>Planning</span>
-							</div>
-						</div>
-						<p class="project-description">
-							Narzędzie do skanowania bezpieczeństwa aplikacji webowych. Projekt
-							będzie zawierał automatyczne testy OWASP Top 10.
-						</p>
-						<div class="project-tech">
-							<span class="tech-tag">Python</span>
-							<span class="tech-tag">Flask</span>
-							<span class="tech-tag">SQLite</span>
-							<span class="tech-tag">OWASP</span>
-						</div>
-						<div class="coming-soon-label">Coming Soon</div>
-						<div class="project-glow"></div>
-					</div>
-				</div>
-			</div>
-		</section>
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title" data-lang-key="contact.title">Kontakt</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3 data-lang-key="contact.info.title">Dane kontaktowe</h3>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:szymonkaput123@gmail.com">szymonkaput123@gmail.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+48883094559">+48 883 094 559</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-linkedin"></i>
+                            <a href="https://www.linkedin.com/in/szymon-kaput/" target="_blank">LinkedIn</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-github"></i>
+                            <a href="https://github.com/szymkap92/szymkap92" target="_blank">GitHub Portfolio</a>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <h3 data-lang-key="contact.form.title">Wyślij wiadomość</h3>
+                        <form id="contact-form">
+                            <div class="form-group">
+                                <input type="text" id="name" name="name" required>
+                                <label for="name" data-lang-key="contact.form.name">Imię i nazwisko</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" required>
+                                <label for="email" data-lang-key="contact.form.email">E-mail</label>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                                <label for="message" data-lang-key="contact.form.message">Wiadomość</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary" data-lang-key="contact.form.send">Wyślij</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-		<!-- Contact Section -->
-		<section id="contact" class="contact">
-			<div class="container">
-				<div class="section-header">
-					<h2 class="section-title">Kontakt</h2>
-					<div class="section-line"></div>
-				</div>
-				<div class="contact-content">
-					<div class="contact-info">
-						<h3>Nawiążmy współpracę</h3>
-						<p>
-							Szukam możliwości rozwoju w obszarze cyberbezpieczeństwa,
-							administracji systemów i infrastruktury sieciowej. 
-							Jestem otwarty na nowe wyzwania i projekty.
-						</p>
-						<div class="contact-methods">
-							<a href="mailto:szymonkaput123@gmail.com" class="contact-method">
-								<div class="method-icon">📧</div>
-								<div class="method-info">
-									<h4>Email</h4>
-									<p>szymonkaput123@gmail.com</p>
-								</div>
-								<div class="method-arrow">→</div>
-							</a>
-							<a
-								href="https://www.linkedin.com/in/szymon-kaput/"
-								target="_blank"
-								class="contact-method"
-							>
-								<div class="method-icon">💼</div>
-								<div class="method-info">
-									<h4>LinkedIn</h4>
-									<p>Szymon Kaput</p>
-								</div>
-								<div class="method-arrow">→</div>
-							</a>
-							<a
-								href="https://github.com/szymkap92"
-								target="_blank"
-								class="contact-method"
-							>
-								<div class="method-icon">💻</div>
-								<div class="method-info">
-									<h4>GitHub</h4>
-									<p>szymkap92</p>
-								</div>
-								<div class="method-arrow">→</div>
-							</a>
-						</div>
-					</div>
-					<div class="contact-visual">
-						<div class="radar-container">
-							<div class="radar-sweep"></div>
-							<div class="radar-rings">
-								<div class="radar-ring"></div>
-								<div class="radar-ring"></div>
-								<div class="radar-ring"></div>
-								<div class="radar-ring"></div>
-							</div>
-							<div class="radar-blips">
-								<div class="blip blip-1"></div>
-								<div class="blip blip-2"></div>
-								<div class="blip blip-3"></div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Szymon Kaput</h3>
+                    <p data-lang-key="footer.description">Student informatyki specjalizujący się w cyberbezpieczeństwie</p>
+                </div>
+                <div class="footer-links">
+                    <a href="https://github.com/szymkap92/szymkap92" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/szymon-kaput/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:szymonkaput123@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Szymon Kaput. <span data-lang-key="footer.rights">Wszelkie prawa zastrzeżone.</span></p>
+            </div>
+        </div>
+    </footer>
 
-		<!-- Footer -->
-		<footer class="footer">
-			<div class="container">
-				<div class="footer-content">
-					<div class="footer-left">
-						<div class="footer-brand">SK</div>
-						<p>&copy; 2025 Szymon Kaput. Wszystkie prawa zastrzeżone.</p>
-					</div>
-					<div class="footer-right">
-						<div class="footer-links">
-							<a href="#home">Home</a>
-							<a href="#about">About</a>
-							<a href="#skills">Skills</a>
-							<a href="#projects">Projects</a>
-							<a href="#contact">Contact</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</footer>
-
-		<script src="script.js"></script>
-	</body>
+    <script src="script.js"></script>
+</body>
 </html>

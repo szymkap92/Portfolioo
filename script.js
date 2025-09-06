@@ -1,678 +1,541 @@
-// Modern Portfolio JavaScript with Advanced Animations
-
-class PortfolioApp {
-    constructor() {
-        this.init();
-    }
-
-    init() {
-        this.setupEventListeners();
-        this.initAnimations();
-        this.setupNavigation();
-        this.setupCursor();
-        this.setupScrollEffects();
-        this.setupTypingEffect();
-        this.setupSkillBars();
-        this.setupCounters();
-        this.setupIntersectionObserver();
-        this.setupMatrixEffect();
-        console.log('🚀 Portfolio loaded successfully');
-    }
-
-    setupEventListeners() {
-        window.addEventListener('load', () => this.handlePageLoad());
-        window.addEventListener('scroll', () => this.handleScroll());
-        window.addEventListener('resize', () => this.handleResize());
-        document.addEventListener('mousemove', (e) => this.updateCursor(e));
-        
-        // Mobile navigation
-        const navToggle = document.querySelector('.nav-toggle');
-        const navMenu = document.querySelector('.nav-menu');
-        
-        if (navToggle && navMenu) {
-            navToggle.addEventListener('click', () => {
-                navMenu.classList.toggle('active');
-                navToggle.classList.toggle('active');
-            });
-        }
-
-        // Close mobile menu on link click
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                navToggle.classList.remove('active');
-            });
-        });
-    }
-
-    handlePageLoad() {
-        document.body.classList.add('loaded');
-        this.startTypingAnimation();
-        this.animateHeroElements();
-    }
-
-    handleScroll() {
-        const navbar = document.querySelector('.navbar');
-        const scrollTop = window.pageYOffset;
-
-        // Navbar scroll effect
-        if (scrollTop > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-
-        // Update active navigation
-        this.updateActiveNavigation();
-    }
-
-    handleResize() {
-        // Recalculate positions on resize
-        this.setupSkillBars();
-    }
-
-    // Advanced Cursor Effect
-    setupCursor() {
-        const cursor = document.querySelector('.cursor-glow');
-        if (!cursor) return;
-
-        let mouseX = 0;
-        let mouseY = 0;
-        let cursorX = 0;
-        let cursorY = 0;
-
-        const updateCursorPosition = () => {
-            const dx = mouseX - cursorX;
-            const dy = mouseY - cursorY;
-            
-            cursorX += dx * 0.1;
-            cursorY += dy * 0.1;
-            
-            cursor.style.left = `${cursorX}px`;
-            cursor.style.top = `${cursorY}px`;
-            
-            requestAnimationFrame(updateCursorPosition);
-        };
-
-        updateCursorPosition();
-
-        // Cursor interactions
-        document.querySelectorAll('a, button, .project-card, .skill-tag').forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursor.style.transform = 'scale(2)';
-                cursor.style.mixBlendMode = 'difference';
-            });
-            
-            el.addEventListener('mouseleave', () => {
-                cursor.style.transform = 'scale(1)';
-                cursor.style.mixBlendMode = 'screen';
-            });
-        });
-    }
-
-    updateCursor(e) {
-        const cursor = document.querySelector('.cursor-glow');
-        if (cursor) {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        }
-    }
-
-    // Navigation System
-    setupNavigation() {
-        const navLinks = document.querySelectorAll('.nav-link');
-        const sections = document.querySelectorAll('section[id]');
-
-        // Smooth scroll for navigation links
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetId = link.getAttribute('href').substring(1);
-                const targetSection = document.getElementById(targetId);
-                
-                if (targetSection) {
-                    const offsetTop = targetSection.offsetTop - 70;
-                    window.scrollTo({
-                        top: offsetTop,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    }
-
-    updateActiveNavigation() {
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.nav-link');
-        const scrollPos = window.scrollY + 100;
-
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            const sectionId = section.getAttribute('id');
-
-            if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${sectionId}`) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-        });
-    }
-
-    // Advanced Typing Effect
-    setupTypingEffect() {
-        const typingElements = document.querySelectorAll('.typing-text, .command.typing');
-        
-        typingElements.forEach(element => {
-            const text = element.textContent;
-            element.textContent = '';
-            this.typeWriter(element, text, 100);
-        });
-    }
-
-    typeWriter(element, text, speed) {
-        let i = 0;
-        const timer = setInterval(() => {
-            if (i < text.length) {
-                element.textContent += text.charAt(i);
-                i++;
-            } else {
-                clearInterval(timer);
-                // Add blinking cursor
-                if (!element.querySelector('.cursor')) {
-                    const cursor = document.createElement('span');
-                    cursor.classList.add('cursor');
-                    cursor.textContent = '|';
-                    element.appendChild(cursor);
-                }
-            }
-        }, speed);
-    }
-
-    startTypingAnimation() {
-        const typingText = document.querySelector('.typing-text');
-        if (typingText) {
-            const texts = [
-                'Cybersecurity Student & Full-Stack Developer',
-                'Problem Solver & Tech Enthusiast',
-                'Building Secure Applications',
-                'Learning New Technologies'
-            ];
-            
-            let currentIndex = 0;
-            
-            const cycleText = () => {
-                typingText.textContent = '';
-                this.typeWriter(typingText, texts[currentIndex], 80);
-                currentIndex = (currentIndex + 1) % texts.length;
-            };
-            
-            // Initial text
-            cycleText();
-            
-            // Cycle through texts
-            setInterval(cycleText, 4000);
-        }
-    }
-
-    // Skill Bars Animation
-    setupSkillBars() {
-        const skillBars = document.querySelectorAll('.skill-progress');
-        
-        skillBars.forEach(bar => {
-            const width = bar.getAttribute('data-width');
-            bar.style.width = '0%';
-            
-            // Animate when in viewport
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        setTimeout(() => {
-                            bar.style.width = `${width}%`;
-                        }, Math.random() * 500);
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.5 });
-            
-            observer.observe(bar);
-        });
-    }
-
-    // Counter Animation
-    setupCounters() {
-        const counters = document.querySelectorAll('.stat-number');
-        
-        counters.forEach(counter => {
-            const target = parseInt(counter.getAttribute('data-count'));
-            counter.textContent = '0';
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        this.animateCounter(counter, target);
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.5 });
-            
-            observer.observe(counter);
-        });
-    }
-
-    animateCounter(element, target) {
-        let current = 0;
-        const increment = target / 50;
-        const timer = setInterval(() => {
-            current += increment;
-            if (current >= target) {
-                element.textContent = target;
-                clearInterval(timer);
-            } else {
-                element.textContent = Math.ceil(current);
-            }
-        }, 40);
-    }
-
-    // Scroll Effects
-    setupScrollEffects() {
-        // Parallax effect for hero section
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const heroParticles = document.querySelector('.hero-particles');
-            if (heroParticles) {
-                heroParticles.style.transform = `translateY(${scrolled * 0.3}px)`;
-            }
-        });
-    }
-
-    // Advanced Animation System
-    initAnimations() {
-        // Fade in animation for sections
-        const animatedElements = document.querySelectorAll('.about-card, .skill-category, .project-card, .contact-method');
-        
-        animatedElements.forEach((element, index) => {
-            element.style.opacity = '0';
-            element.style.transform = 'translateY(50px)';
-            element.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
-            element.style.transitionDelay = `${index * 0.1}s`;
-        });
-    }
-
-    setupIntersectionObserver() {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                    
-                    // Special animations for specific elements
-                    if (entry.target.classList.contains('project-card')) {
-                        entry.target.style.transform = 'translateY(0) scale(1)';
-                    }
-                    
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.2,
-            rootMargin: '0px 0px -50px 0px'
-        });
-
-        document.querySelectorAll('.about-card, .skill-category, .project-card, .contact-method').forEach(el => {
-            observer.observe(el);
-        });
-    }
-
-    animateHeroElements() {
-        const heroText = document.querySelector('.hero-text');
-        const heroVisual = document.querySelector('.hero-visual');
-        
-        if (heroText) {
-            heroText.style.animation = 'slideInLeft 1s cubic-bezier(0.4, 0, 0.2, 1)';
-        }
-        
-        if (heroVisual) {
-            heroVisual.style.animation = 'slideInRight 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s both';
-        }
-    }
-
-    // Matrix Rain Effect
-    setupMatrixEffect() {
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-        
-        // Create matrix background
-        const matrixBg = document.querySelector('.matrix-bg');
-        if (!matrixBg) return;
-        
-        canvas.style.position = 'fixed';
-        canvas.style.top = '0';
-        canvas.style.left = '0';
-        canvas.style.width = '100%';
-        canvas.style.height = '100%';
-        canvas.style.pointerEvents = 'none';
-        canvas.style.zIndex = '-1';
-        canvas.style.opacity = '0.1';
-        
-        matrixBg.appendChild(canvas);
-        
-        const resizeCanvas = () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        };
-        
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-        
-        // Matrix characters
-        const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
-        const charArray = chars.split('');
-        
-        const fontSize = 14;
-        const columns = Math.floor(canvas.width / fontSize);
-        const drops = Array(columns).fill(1);
-        
-        const drawMatrix = () => {
-            ctx.fillStyle = 'rgba(10, 10, 15, 0.05)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
-            ctx.fillStyle = '#00ff9f';
-            ctx.font = `${fontSize}px monospace`;
-            
-            for (let i = 0; i < drops.length; i++) {
-                const text = charArray[Math.floor(Math.random() * charArray.length)];
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                    drops[i] = 0;
-                }
-                drops[i]++;
-            }
-        };
-        
-        // Start matrix animation
-        setInterval(drawMatrix, 50);
-    }
-
-    // Project Card Interactions
-    setupProjectInteractions() {
-        const projectCards = document.querySelectorAll('.project-card');
-        
-        projectCards.forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.transform = 'translateY(-15px) rotateX(10deg)';
-                card.style.boxShadow = '0 25px 50px rgba(0, 255, 159, 0.2)';
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'translateY(0) rotateX(0deg)';
-                card.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3)';
-            });
-        });
-    }
-
-    // Terminal Animation
-    setupTerminalAnimation() {
-        const terminalBody = document.querySelector('.terminal-body');
-        if (!terminalBody) return;
-        
-        const commands = [
-            { prompt: 'szymon@dev:~$', command: 'cat skills.txt', delay: 1000 },
-            { output: 'Python ████████████ 85%', delay: 2000 },
-            { output: 'JavaScript ██████████ 80%', delay: 2500 },
-            { output: 'C# ████████ 75%', delay: 3000 },
-            { prompt: 'szymon@dev:~$', command: 'ls projects/', delay: 4000 },
-            { output: 'DiveCenter/ Portfolio/ SecurityScanner/', delay: 4500 },
-            { prompt: 'szymon@dev:~$', command: '', delay: 5000 }
-        ];
-        
-        let currentIndex = 0;
-        
-        const executeCommand = () => {
-            if (currentIndex >= commands.length) return;
-            
-            const cmd = commands[currentIndex];
-            const line = document.createElement('div');
-            line.className = 'terminal-line';
-            
-            if (cmd.prompt) {
-                line.innerHTML = `<span class="prompt">${cmd.prompt}</span> <span class="command">${cmd.command}</span>`;
-            } else {
-                line.innerHTML = `<div class="output-line">${cmd.output}</div>`;
-            }
-            
-            terminalBody.appendChild(line);
-            currentIndex++;
-            
-            if (currentIndex < commands.length) {
-                setTimeout(executeCommand, commands[currentIndex].delay);
-            }
-        };
-        
-        // Start terminal animation after page load
-        setTimeout(executeCommand, 2000);
-    }
-
-    // Contact Form Enhancement (if added later)
-    setupContactForm() {
-        const contactForm = document.querySelector('#contact-form');
-        if (!contactForm) return;
-        
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            // Add form submission logic here
-            this.showNotification('Message sent successfully!', 'success');
-        });
-    }
-
-    showNotification(message, type = 'info') {
-        const notification = document.createElement('div');
-        notification.className = `notification notification-${type}`;
-        notification.textContent = message;
-        notification.style.cssText = `
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: var(--bg-card);
-            color: var(--text-primary);
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            border: 1px solid var(--primary);
-            box-shadow: var(--glow-primary);
-            z-index: 10000;
-            transform: translateX(400px);
-            transition: all 0.3s ease;
-        `;
-        
-        document.body.appendChild(notification);
-        
-        setTimeout(() => {
-            notification.style.transform = 'translateX(0)';
-        }, 100);
-        
-        setTimeout(() => {
-            notification.style.transform = 'translateX(400px)';
-            setTimeout(() => notification.remove(), 300);
-        }, 3000);
-    }
-
-    // Easter Egg - Konami Code
-    setupEasterEgg() {
-        const konamiCode = [
-            'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
-            'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight',
-            'KeyB', 'KeyA'
-        ];
-        let userInput = [];
-        
-        document.addEventListener('keydown', (e) => {
-            userInput.push(e.code);
-            if (userInput.length > konamiCode.length) {
-                userInput.shift();
-            }
-            
-            if (JSON.stringify(userInput) === JSON.stringify(konamiCode)) {
-                this.activateEasterEgg();
-                userInput = [];
-            }
-        });
-    }
-
-    activateEasterEgg() {
-        document.body.style.filter = 'hue-rotate(180deg)';
-        this.showNotification('🎉 Easter egg activated! Matrix mode enabled!', 'success');
-        
-        setTimeout(() => {
-            document.body.style.filter = 'none';
-        }, 5000);
-    }
-}
-
-// CSS Animations (added via JavaScript for better control)
-const addDynamicStyles = () => {
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes slideInLeft {
-            from {
-                transform: translateX(-50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-        
-        @keyframes slideInRight {
-            from {
-                transform: translateX(50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                transform: translateY(30px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-        
-        .loaded .hero-text {
-            animation: slideInLeft 1s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .loaded .hero-visual {
-            animation: slideInRight 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s both;
-        }
-    `;
-    
-    document.head.appendChild(style);
-};
-
-// Performance Optimization
-const optimizePerformance = () => {
-    // Preload critical fonts
-    const fontPreloads = [
-        'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap',
-        'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap'
-    ];
-    
-    fontPreloads.forEach(url => {
-        const link = document.createElement('link');
-        link.rel = 'preload';
-        link.href = url;
-        link.as = 'style';
-        document.head.appendChild(link);
-    });
-    
-    // Lazy load non-critical resources
-    if ('IntersectionObserver' in window) {
-        const lazyImages = document.querySelectorAll('img[data-src]');
-        const imageObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src;
-                    img.removeAttribute('data-src');
-                    imageObserver.unobserve(img);
-                }
-            });
-        });
-        
-        lazyImages.forEach(img => imageObserver.observe(img));
+// Language translations
+const translations = {
+    pl: {
+        'nav.home': 'Home',
+        'nav.skills': 'Umiejętności',
+        'nav.projects': 'Projekty',
+        'nav.about': 'O mnie',
+        'nav.blog': 'Blog',
+        'nav.contact': 'Kontakt',
+        'hero.title': 'Cześć, jestem Szymon Kaput',
+        'hero.subtitle': 'Student informatyki specjalizujący się w cyberbezpieczeństwie',
+        'hero.description': 'Pasjonuje się nowymi technologiami, sieciami komputerowymi i bezpieczeństwem systemów. Aktualnie kończę studia inżynierskie i planuję kontynuować naukę na PJATK.',
+        'hero.portfolio': 'Sprawdź portfolio',
+        'hero.contact': 'Skontaktuj się',
+        'skills.title': 'Umiejętności',
+        'skills.category.programming': 'Języki programowania',
+        'skills.category.frontend': 'Frontend & Design',
+        'skills.category.systems': 'Systemy & Infrastruktura',
+        'skills.category.databases': 'Bazy danych',
+        'skills.category.devops': 'DevOps & Narzędzia',
+        'skills.python': 'Programowanie w Pythonie, automatyzacja, skrypty bezpieczeństwa',
+        'skills.linux': 'Administracja systemami Linux, bash scripting, konfiguracja serwerów',
+        'skills.windows': 'Systemy Windows, Active Directory, PowerShell',
+        'skills.networking.title': 'Sieci komputerowe',
+        'skills.networking.desc': 'Konfiguracja sieci, protokoły, bezpieczeństwo sieciowe',
+        'skills.php': 'Tworzenie aplikacji webowych, Laravel, bezpieczne kodowanie',
+        'skills.js': 'Tworzenie interaktywnych stron, Node.js, React',
+        'skills.docker': 'Konteneryzacja aplikacji, orkiestracja, CI/CD',
+        'skills.git': 'Kontrola wersji, GitHub, collaborative development',
+        'skills.csharp': 'Programowanie w C#, .NET Framework, aplikacje desktopowe',
+        'skills.frontend.title': 'Frontend / UX',
+        'skills.frontend.desc': 'Projektowanie interfejsów użytkownika, doświadczenie użytkownika',
+        'skills.webtech.title': 'HTML5 / CSS3 / Tailwind',
+        'skills.webtech.desc': 'Nowoczesne technologie webowe, responsywny design',
+        'skills.cicd.title': 'CI/CD',
+        'skills.cicd.desc': 'GitHub Actions, GitLab CI, Jenkins - automatyzacja wdrożeń',
+        'skills.sql.title': 'SQL',
+        'skills.sql.desc': 'MySQL, PostgreSQL - relacyjne bazy danych',
+        'skills.nosql.title': 'NoSQL',
+        'skills.nosql.desc': 'MongoDB, Redis - nierelacyjne bazy danych',
+        'projects.title': 'Projekty',
+        'projects.loading': 'Ładowanie projektów z GitHub...',
+        'projects.github': 'Zobacz więcej na GitHub',
+        'about.title': 'O mnie',
+        'about.intro': 'Student informatyki na ostatnim roku studiów inżynierskich, specjalizujący się w cyberbezpieczeństwie.',
+        'about.passion': 'Zainteresowanie IT towarzyszyło mi od dziecka. Fascynuje mnie świat technologii, bezpieczeństwa systemów i sieci komputerowych.',
+        'about.future': 'Planuję kontynuować naukę na Polsko-Japońskiej Akademii Technik Komputerowych (PJATK), aby pogłębić swoją wiedzę w dziedzinie cyberbezpieczeństwa.',
+        'about.personal': 'Prywatnie jestem pasjonatem sportu, nowych technologii i narzędzi, które mogą pomóc w codziennej pracy i rozwoju osobistym.',
+        'about.more': 'Dowiedz się więcej',
+        'blog.title': 'Blog',
+        'blog.post1.title': 'Wprowadzenie do cyberbezpieczeństwa',
+        'blog.post1.excerpt': 'Podstawowe pojęcia i narzędzia w dziedzinie cyberbezpieczeństwa...',
+        'blog.post2.title': 'Python w automatyzacji zadań',
+        'blog.post2.excerpt': 'Jak wykorzystać Python do automatyzacji codziennych zadań...',
+        'blog.post3.title': 'Bezpieczeństwo sieci - podstawy',
+        'blog.post3.excerpt': 'Wprowadzenie do zabezpieczania sieci komputerowych...',
+        'blog.all': 'Zobacz wszystkie wpisy',
+        'contact.title': 'Kontakt',
+        'contact.info.title': 'Dane kontaktowe',
+        'contact.form.title': 'Wyślij wiadomość',
+        'contact.form.name': 'Imię i nazwisko',
+        'contact.form.email': 'E-mail',
+        'contact.form.message': 'Wiadomość',
+        'contact.form.send': 'Wyślij',
+        'footer.description': 'Student informatyki specjalizujący się w cyberbezpieczeństwie',
+        'footer.rights': 'Wszelkie prawa zastrzeżone.'
+    },
+    en: {
+        'nav.home': 'Home',
+        'nav.skills': 'Skills',
+        'nav.projects': 'Projects',
+        'nav.about': 'About',
+        'nav.blog': 'Blog',
+        'nav.contact': 'Contact',
+        'hero.title': 'Hi, I\'m Szymon Kaput',
+        'hero.subtitle': 'Computer Science Student specializing in Cybersecurity',
+        'hero.description': 'I\'m passionate about new technologies, computer networks and system security. Currently finishing my engineering studies and planning to continue education at PJATK.',
+        'hero.portfolio': 'Check Portfolio',
+        'hero.contact': 'Get in Touch',
+        'skills.title': 'Skills',
+        'skills.category.programming': 'Programming Languages',
+        'skills.category.frontend': 'Frontend & Design',
+        'skills.category.systems': 'Systems & Infrastructure',
+        'skills.category.databases': 'Databases',
+        'skills.category.devops': 'DevOps & Tools',
+        'skills.python': 'Python programming, automation, security scripts',
+        'skills.linux': 'Linux system administration, bash scripting, server configuration',
+        'skills.windows': 'Windows systems, Active Directory, PowerShell',
+        'skills.networking.title': 'Computer Networks',
+        'skills.networking.desc': 'Network configuration, protocols, network security',
+        'skills.php': 'Web application development, Laravel, secure coding',
+        'skills.js': 'Interactive web development, Node.js, React',
+        'skills.docker': 'Application containerization, orchestration, CI/CD',
+        'skills.git': 'Version control, GitHub, collaborative development',
+        'skills.csharp': 'C# programming, .NET Framework, desktop applications',
+        'skills.frontend.title': 'Frontend / UX',
+        'skills.frontend.desc': 'User interface design, user experience',
+        'skills.webtech.title': 'HTML5 / CSS3 / Tailwind',
+        'skills.webtech.desc': 'Modern web technologies, responsive design',
+        'skills.cicd.title': 'CI/CD',
+        'skills.cicd.desc': 'GitHub Actions, GitLab CI, Jenkins - deployment automation',
+        'skills.sql.title': 'SQL',
+        'skills.sql.desc': 'MySQL, PostgreSQL - relational databases',
+        'skills.nosql.title': 'NoSQL',
+        'skills.nosql.desc': 'MongoDB, Redis - non-relational databases',
+        'projects.title': 'Projects',
+        'projects.loading': 'Loading projects from GitHub...',
+        'projects.github': 'See more on GitHub',
+        'about.title': 'About Me',
+        'about.intro': 'Final year Computer Science student specializing in cybersecurity.',
+        'about.passion': 'Interest in IT has accompanied me since childhood. I\'m fascinated by the world of technology, system security and computer networks.',
+        'about.future': 'I plan to continue my education at the Polish-Japanese Academy of Information Technology (PJATK) to deepen my knowledge in cybersecurity.',
+        'about.personal': 'Privately, I\'m passionate about sports, new technologies and tools that can help in everyday work and personal development.',
+        'about.more': 'Learn More',
+        'blog.title': 'Blog',
+        'blog.post1.title': 'Introduction to Cybersecurity',
+        'blog.post1.excerpt': 'Basic concepts and tools in the field of cybersecurity...',
+        'blog.post2.title': 'Python in Task Automation',
+        'blog.post2.excerpt': 'How to use Python to automate everyday tasks...',
+        'blog.post3.title': 'Network Security - Basics',
+        'blog.post3.excerpt': 'Introduction to securing computer networks...',
+        'blog.all': 'View All Posts',
+        'contact.title': 'Contact',
+        'contact.info.title': 'Contact Information',
+        'contact.form.title': 'Send Message',
+        'contact.form.name': 'Full Name',
+        'contact.form.email': 'E-mail',
+        'contact.form.message': 'Message',
+        'contact.form.send': 'Send',
+        'footer.description': 'Computer Science student specializing in cybersecurity',
+        'footer.rights': 'All rights reserved.'
+    },
+    de: {
+        'nav.home': 'Startseite',
+        'nav.skills': 'Fähigkeiten',
+        'nav.projects': 'Projekte',
+        'nav.about': 'Über mich',
+        'nav.blog': 'Blog',
+        'nav.contact': 'Kontakt',
+        'hero.title': 'Hallo, ich bin Szymon Kaput',
+        'hero.subtitle': 'Informatikstudent mit Spezialisierung auf Cybersicherheit',
+        'hero.description': 'Ich begeistere mich für neue Technologien, Computernetzwerke und Systemsicherheit. Derzeit beende ich mein Ingenieursstudium und plane, meine Ausbildung an der PJATK fortzusetzen.',
+        'hero.portfolio': 'Portfolio ansehen',
+        'hero.contact': 'Kontakt aufnehmen',
+        'skills.title': 'Fähigkeiten',
+        'skills.category.programming': 'Programmiersprachen',
+        'skills.category.frontend': 'Frontend & Design',
+        'skills.category.systems': 'Systeme & Infrastruktur',
+        'skills.category.databases': 'Datenbanken',
+        'skills.category.devops': 'DevOps & Tools',
+        'skills.python': 'Python-Programmierung, Automatisierung, Sicherheitsskripte',
+        'skills.linux': 'Linux-Systemadministration, Bash-Scripting, Serverkonfiguration',
+        'skills.windows': 'Windows-Systeme, Active Directory, PowerShell',
+        'skills.networking.title': 'Computernetzwerke',
+        'skills.networking.desc': 'Netzwerkkonfiguration, Protokolle, Netzwerksicherheit',
+        'skills.php': 'Webentwicklung, Laravel, sichere Programmierung',
+        'skills.js': 'Interaktive Webentwicklung, Node.js, React',
+        'skills.docker': 'Anwendungscontainerisierung, Orchestrierung, CI/CD',
+        'skills.git': 'Versionskontrolle, GitHub, kollaborative Entwicklung',
+        'skills.csharp': 'C#-Programmierung, .NET Framework, Desktop-Anwendungen',
+        'skills.frontend.title': 'Frontend / UX',
+        'skills.frontend.desc': 'Benutzeroberflächen-Design, Benutzererfahrung',
+        'skills.webtech.title': 'HTML5 / CSS3 / Tailwind',
+        'skills.webtech.desc': 'Moderne Webtechnologien, responsives Design',
+        'skills.cicd.title': 'CI/CD',
+        'skills.cicd.desc': 'GitHub Actions, GitLab CI, Jenkins - Deployment-Automatisierung',
+        'skills.sql.title': 'SQL',
+        'skills.sql.desc': 'MySQL, PostgreSQL - relationale Datenbanken',
+        'skills.nosql.title': 'NoSQL',
+        'skills.nosql.desc': 'MongoDB, Redis - nicht-relationale Datenbanken',
+        'projects.title': 'Projekte',
+        'projects.loading': 'Projekte von GitHub laden...',
+        'projects.github': 'Mehr auf GitHub sehen',
+        'about.title': 'Über mich',
+        'about.intro': 'Informatikstudent im letzten Jahr mit Spezialisierung auf Cybersicherheit.',
+        'about.passion': 'Das Interesse an IT begleitet mich seit der Kindheit. Mich fasziniert die Welt der Technologie, Systemsicherheit und Computernetzwerke.',
+        'about.future': 'Ich plane, meine Ausbildung an der Polnisch-Japanischen Akademie für Informationstechnologie (PJATK) fortzusetzen, um mein Wissen im Bereich Cybersicherheit zu vertiefen.',
+        'about.personal': 'Privat bin ich leidenschaftlich interessiert an Sport, neuen Technologien und Tools, die bei der täglichen Arbeit und persönlichen Entwicklung helfen können.',
+        'about.more': 'Mehr erfahren',
+        'blog.title': 'Blog',
+        'blog.post1.title': 'Einführung in die Cybersicherheit',
+        'blog.post1.excerpt': 'Grundlegende Konzepte und Tools im Bereich Cybersicherheit...',
+        'blog.post2.title': 'Python in der Aufgabenautomatisierung',
+        'blog.post2.excerpt': 'Wie man Python zur Automatisierung alltäglicher Aufgaben nutzt...',
+        'blog.post3.title': 'Netzwerksicherheit - Grundlagen',
+        'blog.post3.excerpt': 'Einführung in die Sicherung von Computernetzwerken...',
+        'blog.all': 'Alle Beiträge anzeigen',
+        'contact.title': 'Kontakt',
+        'contact.info.title': 'Kontaktinformationen',
+        'contact.form.title': 'Nachricht senden',
+        'contact.form.name': 'Vollständiger Name',
+        'contact.form.email': 'E-Mail',
+        'contact.form.message': 'Nachricht',
+        'contact.form.send': 'Senden',
+        'footer.description': 'Informatikstudent mit Spezialisierung auf Cybersicherheit',
+        'footer.rights': 'Alle Rechte vorbehalten.'
+    },
+    es: {
+        'nav.home': 'Inicio',
+        'nav.skills': 'Habilidades',
+        'nav.projects': 'Proyectos',
+        'nav.about': 'Sobre mí',
+        'nav.blog': 'Blog',
+        'nav.contact': 'Contacto',
+        'hero.title': 'Hola, soy Szymon Kaput',
+        'hero.subtitle': 'Estudiante de Informática especializado en Ciberseguridad',
+        'hero.description': 'Me apasionan las nuevas tecnologías, las redes informáticas y la seguridad de sistemas. Actualmente terminando mis estudios de ingeniería y planeando continuar la educación en PJATK.',
+        'hero.portfolio': 'Ver Portfolio',
+        'hero.contact': 'Contactar',
+        'skills.title': 'Habilidades',
+        'skills.category.programming': 'Lenguajes de Programación',
+        'skills.category.frontend': 'Frontend & Diseño',
+        'skills.category.systems': 'Sistemas & Infraestructura',
+        'skills.category.databases': 'Bases de Datos',
+        'skills.category.devops': 'DevOps & Herramientas',
+        'skills.python': 'Programación en Python, automatización, scripts de seguridad',
+        'skills.linux': 'Administración de sistemas Linux, bash scripting, configuración de servidores',
+        'skills.windows': 'Sistemas Windows, Active Directory, PowerShell',
+        'skills.networking.title': 'Redes Informáticas',
+        'skills.networking.desc': 'Configuración de redes, protocolos, seguridad de red',
+        'skills.php': 'Desarrollo de aplicaciones web, Laravel, programación segura',
+        'skills.js': 'Desarrollo web interactivo, Node.js, React',
+        'skills.docker': 'Contenerización de aplicaciones, orquestación, CI/CD',
+        'skills.git': 'Control de versiones, GitHub, desarrollo colaborativo',
+        'skills.csharp': 'Programación en C#, .NET Framework, aplicaciones de escritorio',
+        'skills.frontend.title': 'Frontend / UX',
+        'skills.frontend.desc': 'Diseño de interfaces de usuario, experiencia de usuario',
+        'skills.webtech.title': 'HTML5 / CSS3 / Tailwind',
+        'skills.webtech.desc': 'Tecnologías web modernas, diseño responsivo',
+        'skills.cicd.title': 'CI/CD',
+        'skills.cicd.desc': 'GitHub Actions, GitLab CI, Jenkins - automatización de despliegue',
+        'skills.sql.title': 'SQL',
+        'skills.sql.desc': 'MySQL, PostgreSQL - bases de datos relacionales',
+        'skills.nosql.title': 'NoSQL',
+        'skills.nosql.desc': 'MongoDB, Redis - bases de datos no relacionales',
+        'projects.title': 'Proyectos',
+        'projects.loading': 'Cargando proyectos desde GitHub...',
+        'projects.github': 'Ver más en GitHub',
+        'about.title': 'Sobre mí',
+        'about.intro': 'Estudiante de último año de Informática especializado en ciberseguridad.',
+        'about.passion': 'El interés por la informática me acompaña desde la infancia. Me fascina el mundo de la tecnología, la seguridad de sistemas y las redes informáticas.',
+        'about.future': 'Planeo continuar mi educación en la Academia Polaco-Japonesa de Tecnología de la Información (PJATK) para profundizar mis conocimientos en ciberseguridad.',
+        'about.personal': 'En lo personal, soy apasionado del deporte, las nuevas tecnologías y herramientas que pueden ayudar en el trabajo diario y el desarrollo personal.',
+        'about.more': 'Saber más',
+        'blog.title': 'Blog',
+        'blog.post1.title': 'Introducción a la Ciberseguridad',
+        'blog.post1.excerpt': 'Conceptos básicos y herramientas en el campo de la ciberseguridad...',
+        'blog.post2.title': 'Python en la Automatización de Tareas',
+        'blog.post2.excerpt': 'Cómo usar Python para automatizar tareas cotidianas...',
+        'blog.post3.title': 'Seguridad de Redes - Fundamentos',
+        'blog.post3.excerpt': 'Introducción a la seguridad de redes informáticas...',
+        'blog.all': 'Ver todas las publicaciones',
+        'contact.title': 'Contacto',
+        'contact.info.title': 'Información de contacto',
+        'contact.form.title': 'Enviar mensaje',
+        'contact.form.name': 'Nombre completo',
+        'contact.form.email': 'Correo electrónico',
+        'contact.form.message': 'Mensaje',
+        'contact.form.send': 'Enviar',
+        'footer.description': 'Estudiante de Informática especializado en ciberseguridad',
+        'footer.rights': 'Todos los derechos reservados.'
     }
 };
 
-// Initialize application
-document.addEventListener('DOMContentLoaded', () => {
-    addDynamicStyles();
-    optimizePerformance();
-    setupLanguageSelector();
-    new PortfolioApp();
+// Current language
+let currentLang = 'pl';
+
+// DOM Elements
+const langButtons = document.querySelectorAll('.lang-btn');
+const hamburger = document.querySelector('.hamburger');
+const navMenu = document.querySelector('.nav-menu');
+const navLinks = document.querySelectorAll('.nav-link');
+const contactForm = document.getElementById('contact-form');
+
+// Initialize the website
+document.addEventListener('DOMContentLoaded', function() {
+    initializeLanguage();
+    loadGitHubProjects();
+    initializeNavigation();
+    initializeContactForm();
+    initializeScrollAnimations();
+    
+    // Set language from localStorage or default to 'pl'
+    const savedLang = localStorage.getItem('preferred-language') || 'pl';
+    switchLanguage(savedLang);
 });
 
-// Service Worker Registration (for PWA capabilities)
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        // Service worker would be registered here for production
-        console.log('🔧 Ready for PWA implementation');
+// Language switching functionality
+function initializeLanguage() {
+    langButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const lang = btn.getAttribute('data-lang');
+            switchLanguage(lang);
+        });
     });
 }
 
-// Language Selector Setup - standalone function
-function setupLanguageSelector() {
-        const langToggle = document.querySelector('.lang-toggle');
-        const langDropdown = document.querySelector('.lang-dropdown');
-        const languageSelector = document.querySelector('.language-selector');
-        
-        if (!langToggle || !langDropdown) return;
-        
-        // Toggle dropdown
-        langToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            languageSelector.classList.toggle('active');
-        });
-        
-        // Close dropdown when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!languageSelector.contains(e.target)) {
-                languageSelector.classList.remove('active');
-            }
-        });
-        
-        // Prevent dropdown from closing when clicking inside
-        langDropdown.addEventListener('click', (e) => {
-            e.stopPropagation();
-        });
-        
-        // Add hover effects
-        const langOptions = document.querySelectorAll('.lang-option');
-        langOptions.forEach(option => {
-            option.addEventListener('mouseenter', () => {
-                option.style.background = 'rgba(0, 255, 159, 0.1)';
-                option.style.borderColor = 'var(--primary)';
-            });
-            
-            option.addEventListener('mouseleave', () => {
-                if (!option.classList.contains('active')) {
-                    option.style.background = 'transparent';
-                    option.style.borderColor = 'var(--border)';
-                }
-            });
-        });
+function switchLanguage(lang) {
+    currentLang = lang;
+    
+    // Update active language button
+    langButtons.forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.getAttribute('data-lang') === lang) {
+            btn.classList.add('active');
+        }
+    });
+    
+    // Update all translatable elements
+    const translatableElements = document.querySelectorAll('[data-lang-key]');
+    translatableElements.forEach(element => {
+        const key = element.getAttribute('data-lang-key');
+        if (translations[lang] && translations[lang][key]) {
+            element.textContent = translations[lang][key];
+        }
+    });
+    
+    // Update HTML lang attribute
+    document.documentElement.lang = lang;
+    
+    // Save language preference
+    localStorage.setItem('preferred-language', lang);
 }
 
-// Export for potential module use
-window.PortfolioApp = PortfolioApp;
+// Navigation functionality
+function initializeNavigation() {
+    // Hamburger menu toggle
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+    
+    // Close menu when clicking on nav links
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        });
+    });
+    
+    // Smooth scrolling and active link highlighting
+    window.addEventListener('scroll', updateActiveNavLink);
+}
+
+function updateActiveNavLink() {
+    const sections = document.querySelectorAll('section');
+    const scrollPos = window.scrollY + 100;
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
+        
+        if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${sectionId}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+    });
+}
+
+// GitHub Projects Loading
+async function loadGitHubProjects() {
+    const projectsContainer = document.getElementById('projects-container');
+    
+    try {
+        const response = await fetch('https://api.github.com/users/szymkap92/repos?sort=updated&per_page=6');
+        
+        if (!response.ok) {
+            throw new Error('Failed to fetch projects');
+        }
+        
+        const repos = await response.json();
+        
+        // Filter out forks and select interesting repositories
+        const filteredRepos = repos.filter(repo => !repo.fork && repo.name !== 'szymkap92');
+        
+        projectsContainer.innerHTML = '';
+        
+        if (filteredRepos.length === 0) {
+            projectsContainer.innerHTML = `
+                <div class="project-loading">
+                    <p>${translations[currentLang]['projects.loading'] || 'No projects found'}</p>
+                </div>
+            `;
+            return;
+        }
+        
+        filteredRepos.slice(0, 6).forEach(repo => {
+            const projectElement = createProjectElement(repo);
+            projectsContainer.appendChild(projectElement);
+        });
+        
+    } catch (error) {
+        console.error('Error loading GitHub projects:', error);
+        projectsContainer.innerHTML = `
+            <div class="project-loading">
+                <p>Error loading projects. Please check back later.</p>
+            </div>
+        `;
+    }
+}
+
+function createProjectElement(repo) {
+    const projectDiv = document.createElement('div');
+    projectDiv.className = 'project-item';
+    
+    const languages = repo.language ? [repo.language] : [];
+    
+    projectDiv.innerHTML = `
+        <div class="project-content">
+            <h3 class="project-title">${repo.name}</h3>
+            <p class="project-description">${repo.description || 'No description available'}</p>
+            <div class="project-tech">
+                ${languages.map(lang => `<span class="tech-tag">${lang}</span>`).join('')}
+            </div>
+            <div class="project-links">
+                <a href="${repo.html_url}" target="_blank" class="project-link">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                ${repo.homepage ? `<a href="${repo.homepage}" target="_blank" class="project-link">
+                    <i class="fas fa-external-link-alt"></i> Live Demo
+                </a>` : ''}
+            </div>
+        </div>
+    `;
+    
+    return projectDiv;
+}
+
+// Contact Form Functionality
+function initializeContactForm() {
+    if (contactForm) {
+        contactForm.addEventListener('submit', handleContactFormSubmit);
+    }
+}
+
+function handleContactFormSubmit(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(contactForm);
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const message = formData.get('message');
+    
+    // Simple form validation
+    if (!name || !email || !message) {
+        alert(currentLang === 'pl' ? 'Proszę wypełnić wszystkie pola.' : 'Please fill in all fields.');
+        return;
+    }
+    
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        alert(currentLang === 'pl' ? 'Proszę podać prawidłowy adres email.' : 'Please provide a valid email address.');
+        return;
+    }
+    
+    // Create mailto link
+    const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+    const mailtoLink = `mailto:szymonkaput123@gmail.com?subject=${subject}&body=${body}`;
+    
+    // Open default email client
+    window.location.href = mailtoLink;
+    
+    // Show success message
+    const successMessage = currentLang === 'pl' ? 'Dziękuję za wiadomość! Klient email zostanie otwarty.' : 'Thank you for your message! Your email client will open.';
+    alert(successMessage);
+    
+    // Reset form
+    contactForm.reset();
+}
+
+// Scroll Animations
+function initializeScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-on-scroll');
+            }
+        });
+    }, observerOptions);
+    
+    // Observe all sections and major elements
+    const elementsToAnimate = document.querySelectorAll('section, .skill-item, .project-item, .blog-post');
+    elementsToAnimate.forEach(el => observer.observe(el));
+}
+
+// Utility Functions
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Performance optimization
+const debouncedScrollHandler = debounce(updateActiveNavLink, 100);
+window.addEventListener('scroll', debouncedScrollHandler);
+
+// Error handling for images
+document.addEventListener('DOMContentLoaded', function() {
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+        img.addEventListener('error', function() {
+            this.style.display = 'none';
+            console.warn(`Failed to load image: ${this.src}`);
+        });
+    });
+});
+
+// Keyboard navigation support
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+    }
+});
+
+// Print styles support
+window.addEventListener('beforeprint', function() {
+    document.body.classList.add('printing');
+});
+
+window.addEventListener('afterprint', function() {
+    document.body.classList.remove('printing');
+});

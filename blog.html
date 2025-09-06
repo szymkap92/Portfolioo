@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog Szymona Kaput - artykuły o cyberbezpieczeństwie, programowaniu i nowych technologiach. Dzielę się wiedzą i doświadczeniami z dziedziny IT.">
+    <meta name="keywords" content="blog, cyberbezpieczeństwo, Python, programowanie, IT, bezpieczeństwo sieci">
+    <title>Blog - Szymon Kaput</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="index.html">Szymon Kaput</a>
+                </div>
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang="pl">PL</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="de">DE</button>
+                    <button class="lang-btn" data-lang="es">ESP</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="blog-page">
+            <div class="container">
+                <div class="back-button">
+                    <a href="index.html" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> <span data-lang-key="back">Powrót</span>
+                    </a>
+                </div>
+                
+                <div class="blog-hero">
+                    <h1 data-lang-key="blog.title">Blog</h1>
+                    <p data-lang-key="blog.subtitle">Dzielę się wiedzą i doświadczeniami z dziedziny cyberbezpieczeństwa i IT</p>
+                </div>
+
+                <div class="blog-categories">
+                    <button class="category-btn active" data-category="all" data-lang-key="blog.categories.all">Wszystkie</button>
+                    <button class="category-btn" data-category="security" data-lang-key="blog.categories.security">Cyberbezpieczeństwo</button>
+                    <button class="category-btn" data-category="programming" data-lang-key="blog.categories.programming">Programowanie</button>
+                    <button class="category-btn" data-category="networks" data-lang-key="blog.categories.networks">Sieci</button>
+                    <button class="category-btn" data-category="tools" data-lang-key="blog.categories.tools">Narzędzia</button>
+                </div>
+
+                <div class="blog-posts" id="blog-posts-container">
+                    <!-- Blog posts will be loaded dynamically -->
+                </div>
+
+                <div class="blog-pagination">
+                    <button class="pagination-btn" id="prev-page" disabled>
+                        <i class="fas fa-chevron-left"></i> <span data-lang-key="blog.pagination.prev">Poprzednia</span>
+                    </button>
+                    <span class="pagination-info">
+                        <span data-lang-key="blog.pagination.page">Strona</span> <span id="current-page">1</span> <span data-lang-key="blog.pagination.of">z</span> <span id="total-pages">1</span>
+                    </span>
+                    <button class="pagination-btn" id="next-page" disabled>
+                        <span data-lang-key="blog.pagination.next">Następna</span> <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Szymon Kaput</h3>
+                    <p data-lang-key="footer.description">Student informatyki specjalizujący się w cyberbezpieczeństwie</p>
+                </div>
+                <div class="footer-links">
+                    <a href="https://github.com/szymkap92/szymkap92" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/szymon-kaput/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:szymonkaput123@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Szymon Kaput. <span data-lang-key="footer.rights">Wszelkie prawa zastrzeżone.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="blog.js"></script>
+</body>
+</html>
