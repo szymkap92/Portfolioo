@@ -7,7 +7,7 @@ const translations = {
         'nav.about': 'O mnie',
         'nav.blog': 'Blog',
         'nav.contact': 'Kontakt',
-        'hero.title': 'Cześć, jestem Szymon Kaput',
+        'hero.title': 'Cześć<span class="punctuation">,</span> jestem <span class="name">Szymon</span> Kaput',
         'hero.subtitle': 'Student informatyki specjalizujący się w cyberbezpieczeństwie',
         'hero.description': 'Pasjonuje się nowymi technologiami, sieciami komputerowymi i bezpieczeństwem systemów. Aktualnie kończę studia inżynierskie i planuję kontynuować naukę na PJATK.',
         'hero.portfolio': 'Sprawdź portfolio',
@@ -18,6 +18,10 @@ const translations = {
         'skills.category.systems': 'Systemy & Infrastruktura',
         'skills.category.databases': 'Bazy danych',
         'skills.category.devops': 'DevOps & Narzędzia',
+        'skills.category.cybersecurity': 'CyberSecurity',
+        'skills.kubernetes': 'Orkiestracja kontenerów, zarządzanie klastrami, skalowanie aplikacji',
+        'skills.wazuh': 'SIEM/SOAR platform do monitoringu bezpieczeństwa i analizy zagrożeń',
+        'skills.zabbix': 'Monitoring infrastruktury IT i aplikacji, alerting i metryki',
         'skills.python': 'Programowanie w Pythonie, automatyzacja, skrypty bezpieczeństwa',
         'skills.linux': 'Administracja systemami Linux, bash scripting, konfiguracja serwerów',
         'skills.windows': 'Systemy Windows, Active Directory, PowerShell',
@@ -72,7 +76,7 @@ const translations = {
         'nav.about': 'About',
         'nav.blog': 'Blog',
         'nav.contact': 'Contact',
-        'hero.title': 'Hi, I\'m Szymon Kaput',
+        'hero.title': 'Hi<span class="punctuation">,</span> I\'m <span class="name">Szymon</span> Kaput',
         'hero.subtitle': 'Computer Science Student specializing in Cybersecurity',
         'hero.description': 'I\'m passionate about new technologies, computer networks and system security. Currently finishing my engineering studies and planning to continue education at PJATK.',
         'hero.portfolio': 'Check Portfolio',
@@ -83,6 +87,10 @@ const translations = {
         'skills.category.systems': 'Systems & Infrastructure',
         'skills.category.databases': 'Databases',
         'skills.category.devops': 'DevOps & Tools',
+        'skills.category.cybersecurity': 'CyberSecurity',
+        'skills.kubernetes': 'Container orchestration, cluster management, application scaling',
+        'skills.wazuh': 'SIEM/SOAR platform for security monitoring and threat analysis',
+        'skills.zabbix': 'IT infrastructure and application monitoring, alerting and metrics',
         'skills.python': 'Python programming, automation, security scripts',
         'skills.linux': 'Linux system administration, bash scripting, server configuration',
         'skills.windows': 'Windows systems, Active Directory, PowerShell',
@@ -137,7 +145,7 @@ const translations = {
         'nav.about': 'Über mich',
         'nav.blog': 'Blog',
         'nav.contact': 'Kontakt',
-        'hero.title': 'Hallo, ich bin Szymon Kaput',
+        'hero.title': 'Hallo<span class="punctuation">,</span> ich bin <span class="name">Szymon</span> Kaput',
         'hero.subtitle': 'Informatikstudent mit Spezialisierung auf Cybersicherheit',
         'hero.description': 'Ich begeistere mich für neue Technologien, Computernetzwerke und Systemsicherheit. Derzeit beende ich mein Ingenieursstudium und plane, meine Ausbildung an der PJATK fortzusetzen.',
         'hero.portfolio': 'Portfolio ansehen',
@@ -148,6 +156,10 @@ const translations = {
         'skills.category.systems': 'Systeme & Infrastruktur',
         'skills.category.databases': 'Datenbanken',
         'skills.category.devops': 'DevOps & Tools',
+        'skills.category.cybersecurity': 'CyberSecurity',
+        'skills.kubernetes': 'Containerorchestrierung, Cluster-Management, Anwendungsskalierung',
+        'skills.wazuh': 'SIEM/SOAR-Plattform für Sicherheitsüberwachung und Bedrohungsanalyse',
+        'skills.zabbix': 'IT-Infrastruktur- und Anwendungsüberwachung, Benachrichtigungen und Metriken',
         'skills.python': 'Python-Programmierung, Automatisierung, Sicherheitsskripte',
         'skills.linux': 'Linux-Systemadministration, Bash-Scripting, Serverkonfiguration',
         'skills.windows': 'Windows-Systeme, Active Directory, PowerShell',
@@ -202,7 +214,7 @@ const translations = {
         'nav.about': 'Sobre mí',
         'nav.blog': 'Blog',
         'nav.contact': 'Contacto',
-        'hero.title': 'Hola, soy Szymon Kaput',
+        'hero.title': 'Hola<span class="punctuation">,</span> soy <span class="name">Szymon</span> Kaput',
         'hero.subtitle': 'Estudiante de Informática especializado en Ciberseguridad',
         'hero.description': 'Me apasionan las nuevas tecnologías, las redes informáticas y la seguridad de sistemas. Actualmente terminando mis estudios de ingeniería y planeando continuar la educación en PJATK.',
         'hero.portfolio': 'Ver Portfolio',
@@ -213,6 +225,10 @@ const translations = {
         'skills.category.systems': 'Sistemas & Infraestructura',
         'skills.category.databases': 'Bases de Datos',
         'skills.category.devops': 'DevOps & Herramientas',
+        'skills.category.cybersecurity': 'CyberSecurity',
+        'skills.kubernetes': 'Orquestación de contenedores, gestión de clusters, escalado de aplicaciones',
+        'skills.wazuh': 'Plataforma SIEM/SOAR para monitoreo de seguridad y análisis de amenazas',
+        'skills.zabbix': 'Monitoreo de infraestructura IT y aplicaciones, alertas y métricas',
         'skills.python': 'Programación en Python, automatización, scripts de seguridad',
         'skills.linux': 'Administración de sistemas Linux, bash scripting, configuración de servidores',
         'skills.windows': 'Sistemas Windows, Active Directory, PowerShell',
@@ -311,7 +327,7 @@ function switchLanguage(lang) {
     translatableElements.forEach(element => {
         const key = element.getAttribute('data-lang-key');
         if (translations[lang] && translations[lang][key]) {
-            element.textContent = translations[lang][key];
+            element.innerHTML = translations[lang][key];
         }
     });
     
@@ -375,8 +391,54 @@ async function loadGitHubProjects() {
         
         const repos = await response.json();
         
-        // Filter out forks and select interesting repositories
-        const filteredRepos = repos.filter(repo => !repo.fork && repo.name !== 'szymkap92');
+        // Filter out forks and select interesting repositories, exclude Portfolio project
+        const filteredRepos = repos.filter(repo => {
+            const excludedNames = ['szymkap92', 'Portfolio', 'PortFolio', 'portfolio'];
+            const isPortfolioVariant = repo.name.toLowerCase().includes('portfolio');
+            return !repo.fork && !excludedNames.includes(repo.name) && !isPortfolioVariant;
+        });
+        
+        // Add Service-Monitoring manually (hardcoded due to API issues)
+        const serviceMonitoringProject = {
+            name: 'Service-Monitoring',
+            description: 'PowerShell script for monitoring Windows services and system resources',
+            html_url: 'https://github.com/szymkap92/Service-Monitoring',
+            language: 'PowerShell',
+            homepage: null
+        };
+        
+        const serviceMonitoringExists = filteredRepos.some(repo => repo.name === 'Service-Monitoring');
+        if (!serviceMonitoringExists) {
+            filteredRepos.unshift(serviceMonitoringProject);
+        }
+        
+        // Add Notebook project
+        const notebookExists = filteredRepos.some(repo => repo.name === 'Notebook');
+        if (!notebookExists) {
+            try {
+                const notebookResponse = await fetch('https://api.github.com/repos/szymkap92/Notebook');
+                if (notebookResponse.ok) {
+                    const notebookRepo = await notebookResponse.json();
+                    filteredRepos.unshift(notebookRepo);
+                }
+            } catch (error) {
+                console.warn('Could not fetch Notebook repository:', error);
+            }
+        }
+        
+        // Add Mini-honeypot project manually
+        const miniHoneypotProject = {
+            name: 'Mini-honeypot',
+            description: 'Simple honeypot implementation for cybersecurity learning and threat detection',
+            html_url: 'https://github.com/szymkap92/Mini-honeypot',
+            language: 'Python',
+            homepage: null
+        };
+        
+        const miniHoneypotExists = filteredRepos.some(repo => repo.name === 'Mini-honeypot');
+        if (!miniHoneypotExists) {
+            filteredRepos.unshift(miniHoneypotProject);
+        }
         
         projectsContainer.innerHTML = '';
         
