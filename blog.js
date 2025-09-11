@@ -82,6 +82,16 @@ const blogTranslations = {
 const blogPosts = {
     pl: [
         {
+            id: 10,
+            title: 'Nowe książki C++ - pogłębianie wiedzy o języku',
+            excerpt: 'Dziś kupiłem dwie nowe książki o C++, żeby zagłębić moją wiedzę z tego języka. Czas na poważną naukę programowania systemowego!',
+            content: 'Dziś zrobiłem kolejny krok w pogłębianiu swojej wiedzy programistycznej - kupiłem dwie fantastyczne książki o języku C++. To inwestycja w moją przyszłość programistyczną!<br><br><div style="display: flex; gap: 2rem; margin: 2rem 0; justify-content: center; flex-wrap: wrap;"><img src="img/Blog-cpp/Jezyk-C-Szkola-programowania.jpeg" alt="Język C++ Szkoła programowania Stephen Prata" style="width: 200px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.15);"><img src="img/Blog-cpp/Opus-magnum-C-11-Programowanie-w-jezyku-C-KPL.jpeg" alt="Opus Magnum C++11 Programowanie w języku C" style="width: 200px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.15);"></div><br><strong>Co kupiłem?</strong><br><br><strong>1. "Język C++ Szkoła programowania" - Stephen Prata</strong><br>To klasyka wśród książek o C++! Stephen Prata ma świetny sposób tłumaczenia skomplikowanych konceptów programistycznych. Ta książka jest uznawana za jedną z najlepszych pozycji do nauki C++ od podstaw.<br><br><strong>2. "Opus Magnum C++11 Programowanie w języku C++"</strong><br>Druga książka to pozycja skupiająca się na nowoczesnym standardzie C++11. To świetne uzupełnienie, które pozwoli mi poznać najnowsze funkcjonalności języka.<br><br><strong>Dlaczego C++?</strong><br><br>C++ to język, który:<br>• Daje pełną kontrolę nad systemem<br>• Jest używany w programowaniu gier, systemów operacyjnych i aplikacji wymagających wysokiej wydajności<br>• Uczy dobrego myślenia o zarządzaniu pamięcią<br>• Stanowi doskonałą bazę do nauki innych języków programowania<br>• Jest wciąż bardzo aktualny w branży IT<br><br><strong>Moje plany nauki</strong><br><br>Planuję systematycznie przerabiać obie książki równolegle:<br>• Zaczną od podstaw z książką Praty<br>• Równocześnie będę poznawał nowoczesne funkcjonalności C++11<br>• Każdy rozdział będę uzupełniał praktycznymi ćwiczeniami<br>• Postaram się tworzyć małe projekty, żeby utrwalić wiedzę<br><br><strong>Dlaczego warto inwestować w książki?</strong><br><br>W czasach internetu i darmowych kursów, książki wciąż mają ogromną wartość:<br>• Strukturalne podejście do nauki<br>• Głębsze omówienie tematów<br>• Możliwość nauki bez rozpraszaczy<br>• Solidne podstawy teoretyczne<br>• Można wracać do trudnych fragmentów<br><br>C++ to język, który wymaga cierpliwości i systematycznej nauki. Te książki to moja inwestycja w przyszłość programistyczną. Będę dzielił się postępami w nauce na blogu!<br><br>Jeśli też uczysz się C++, polecam te pozycje. Stephen Prata to autor, który naprawdę umie tłumaczyć skomplikowane rzeczy w prosty sposób.',
+            category: 'programming',
+            date: '2025-09-11',
+            readTime: 8,
+            tags: ['C++', 'książki', 'nauka', 'programowanie', 'Stephen Prata', 'C++11']
+        },
+        {
             id: 9,
             title: 'Rozpoczynam przygodę z Akademią Sekurak',
             excerpt: 'Właśnie zapisałem się do Akademii Sekurak 2025. Podzielę się swoimi doświadczeniami z nauki cyberbezpieczeństwa w najbliższych miesiącach.',
@@ -173,6 +183,16 @@ const blogPosts = {
         }
     ],
     en: [
+        {
+            id: 10,
+            title: 'New C++ Books - Deepening My Language Knowledge',
+            excerpt: 'Today I bought two new C++ books to deepen my knowledge of this language. Time for serious system programming learning!',
+            content: 'Today I took another step in deepening my programming knowledge - I bought two fantastic books about C++. This is an investment in my programming future!<br><br><div style="display: flex; gap: 2rem; margin: 2rem 0; justify-content: center; flex-wrap: wrap;"><img src="img/Blog-cpp/Jezyk-C-Szkola-programowania.jpeg" alt="C++ Programming School Stephen Prata" style="width: 200px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.15);"><img src="img/Blog-cpp/Opus-magnum-C-11-Programowanie-w-jezyku-C-KPL.jpeg" alt="Opus Magnum C++11 Programming in C++ Language" style="width: 200px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.15);"></div><br><strong>What did I buy?</strong><br><br><strong>1. "C++ Programming School" - Stephen Prata</strong><br>This is a classic among C++ books! Stephen Prata has a great way of explaining complex programming concepts. This book is considered one of the best positions for learning C++ from scratch.<br><br><strong>2. "Opus Magnum C++11 Programming in C++ Language"</strong><br>The second book focuses on the modern C++11 standard. It\'s a great complement that will allow me to learn the latest language features.<br><br><strong>Why C++?</strong><br><br>C++ is a language that:<br>• Gives full system control<br>• Is used in game programming, operating systems and high-performance applications<br>• Teaches good thinking about memory management<br>• Provides an excellent foundation for learning other programming languages<br>• Is still very relevant in the IT industry<br><br><strong>My learning plans</strong><br><br>I plan to systematically work through both books in parallel:<br>• Start with basics from Prata\'s book<br>• Simultaneously learn modern C++11 features<br>• Supplement each chapter with practical exercises<br>• Try to create small projects to consolidate knowledge<br><br><strong>Why invest in books?</strong><br><br>In times of internet and free courses, books still have enormous value:<br>• Structural approach to learning<br>• Deeper coverage of topics<br>• Ability to learn without distractions<br>• Solid theoretical foundations<br>• You can return to difficult sections<br><br>C++ is a language that requires patience and systematic learning. These books are my investment in my programming future. I\'ll share my learning progress on the blog!<br><br>If you\'re also learning C++, I recommend these positions. Stephen Prata is an author who really knows how to explain complex things in a simple way.',
+            category: 'programming',
+            date: '2025-09-11',
+            readTime: 8,
+            tags: ['C++', 'books', 'learning', 'programming', 'Stephen Prata', 'C++11']
+        },
         {
             id: 9,
             title: 'Starting My Journey with Sekurak Academy',
@@ -266,6 +286,16 @@ const blogPosts = {
     ],
     de: [
         {
+            id: 10,
+            title: 'Neue C++ Bücher - Vertiefung meiner Sprachkenntnisse',
+            excerpt: 'Heute habe ich zwei neue C++ Bücher gekauft, um mein Wissen über diese Sprache zu vertiefen. Zeit für ernsthaftes Systemprogrammierung lernen!',
+            content: 'Heute habe ich einen weiteren Schritt zur Vertiefung meines Programmierwissens gemacht - ich habe zwei fantastische Bücher über C++ gekauft. Das ist eine Investition in meine Programmierzukunft!<br><br><div style="display: flex; gap: 2rem; margin: 2rem 0; justify-content: center; flex-wrap: wrap;"><img src="img/Blog-cpp/Jezyk-C-Szkola-programowania.jpeg" alt="C++ Programmierschule Stephen Prata" style="width: 200px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.15);"><img src="img/Blog-cpp/Opus-magnum-C-11-Programowanie-w-jezyku-C-KPL.jpeg" alt="Opus Magnum C++11 Programmierung in C++ Sprache" style="width: 200px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.15);"></div><br><strong>Was habe ich gekauft?</strong><br><br><strong>1. "C++ Programmierschule" - Stephen Prata</strong><br>Das ist ein Klassiker unter den C++ Büchern! Stephen Prata hat eine großartige Art, komplexe Programmierkonzepte zu erklären. Dieses Buch gilt als eine der besten Positionen zum Erlernen von C++ von Grund auf.<br><br><strong>2. "Opus Magnum C++11 Programmierung in C++ Sprache"</strong><br>Das zweite Buch konzentriert sich auf den modernen C++11 Standard. Es ist eine großartige Ergänzung, die es mir ermöglicht, die neuesten Sprachfeatures zu lernen.<br><br><strong>Warum C++?</strong><br><br>C++ ist eine Sprache, die:<br>• Vollständige Systemkontrolle bietet<br>• In der Spieleprogrammierung, Betriebssystemen und Hochleistungsanwendungen verwendet wird<br>• Gutes Denken über Speicherverwaltung lehrt<br>• Eine ausgezeichnete Grundlage für das Erlernen anderer Programmiersprachen bietet<br>• Immer noch sehr relevant in der IT-Branche ist<br><br><strong>Meine Lernpläne</strong><br><br>Ich plane, beide Bücher systematisch parallel zu bearbeiten:<br>• Beginnen mit Grundlagen aus Pratas Buch<br>• Gleichzeitig moderne C++11 Features lernen<br>• Jedes Kapitel mit praktischen Übungen ergänzen<br>• Versuchen, kleine Projekte zu erstellen, um Wissen zu festigen<br><br><strong>Warum in Bücher investieren?</strong><br><br>In Zeiten von Internet und kostenlosen Kursen haben Bücher immer noch enormen Wert:<br>• Struktureller Ansatz zum Lernen<br>• Tiefere Abdeckung von Themen<br>• Möglichkeit zu lernen ohne Ablenkungen<br>• Solide theoretische Grundlagen<br>• Man kann zu schwierigen Abschnitten zurückkehren<br><br>C++ ist eine Sprache, die Geduld und systematisches Lernen erfordert. Diese Bücher sind meine Investition in meine Programmierzukunft. Ich werde meine Lernfortschritte im Blog teilen!<br><br>Wenn Sie auch C++ lernen, empfehle ich diese Positionen. Stephen Prata ist ein Autor, der wirklich weiß, wie man komplexe Dinge einfach erklärt.',
+            category: 'programming',
+            date: '2025-09-11',
+            readTime: 8,
+            tags: ['C++', 'bücher', 'lernen', 'programmierung', 'Stephen Prata', 'C++11']
+        },
+        {
             id: 9,
             title: 'Beginn meiner Reise mit der Sekurak Academy',
             excerpt: 'Ich habe mich gerade für die Sekurak Academy 2025 angemeldet. Ich werde meine Erfahrungen beim Lernen von Cybersicherheit in den kommenden Monaten teilen.',
@@ -327,6 +357,16 @@ const blogPosts = {
         }
     ],
     es: [
+        {
+            id: 10,
+            title: 'Nuevos Libros de C++ - Profundizando Mi Conocimiento del Lenguaje',
+            excerpt: 'Hoy compré dos nuevos libros de C++ para profundizar mi conocimiento de este lenguaje. ¡Hora de aprender programación de sistemas en serio!',
+            content: 'Hoy di otro paso para profundizar mi conocimiento de programación - compré dos libros fantásticos sobre C++. ¡Esta es una inversión en mi futuro de programación!<br><br><div style="display: flex; gap: 2rem; margin: 2rem 0; justify-content: center; flex-wrap: wrap;"><img src="img/Blog-cpp/Jezyk-C-Szkola-programowania.jpeg" alt="Escuela de Programación C++ Stephen Prata" style="width: 200px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.15);"><img src="img/Blog-cpp/Opus-magnum-C-11-Programowanie-w-jezyku-C-KPL.jpeg" alt="Opus Magnum C++11 Programación en Lenguaje C++" style="width: 200px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.15);"></div><br><strong>¿Qué compré?</strong><br><br><strong>1. "Escuela de Programación C++" - Stephen Prata</strong><br>¡Este es un clásico entre los libros de C++! Stephen Prata tiene una gran manera de explicar conceptos complejos de programación. Este libro es considerado una de las mejores posiciones para aprender C++ desde cero.<br><br><strong>2. "Opus Magnum C++11 Programación en Lenguaje C++"</strong><br>El segundo libro se enfoca en el estándar moderno C++11. Es un gran complemento que me permitirá aprender las características más recientes del lenguaje.<br><br><strong>¿Por qué C++?</strong><br><br>C++ es un lenguaje que:<br>• Da control completo del sistema<br>• Se usa en programación de juegos, sistemas operativos y aplicaciones de alto rendimiento<br>• Enseña buen pensamiento sobre gestión de memoria<br>• Proporciona una excelente base para aprender otros lenguajes de programación<br>• Sigue siendo muy relevante en la industria IT<br><br><strong>Mis planes de aprendizaje</strong><br><br>Planeo trabajar sistemáticamente a través de ambos libros en paralelo:<br>• Empezar con básicos del libro de Prata<br>• Simultáneamente aprender características modernas de C++11<br>• Complementar cada capítulo con ejercicios prácticos<br>• Tratar de crear pequeños proyectos para consolidar conocimiento<br><br><strong>¿Por qué invertir en libros?</strong><br><br>En tiempos de internet y cursos gratuitos, los libros aún tienen un valor enorme:<br>• Enfoque estructural al aprendizaje<br>• Cobertura más profunda de temas<br>• Capacidad de aprender sin distracciones<br>• Fundamentos teóricos sólidos<br>• Puedes volver a secciones difíciles<br><br>C++ es un lenguaje que requiere paciencia y aprendizaje sistemático. Estos libros son mi inversión en mi futuro de programación. ¡Compartiré mi progreso de aprendizaje en el blog!<br><br>Si también estás aprendiendo C++, recomiendo estas posiciones. Stephen Prata es un autor que realmente sabe cómo explicar cosas complejas de manera simple.',
+            category: 'programming',
+            date: '2025-09-11',
+            readTime: 8,
+            tags: ['C++', 'libros', 'aprendizaje', 'programación', 'Stephen Prata', 'C++11']
+        },
         {
             id: 9,
             title: 'Comenzando Mi Aventura con la Academia Sekurak',
