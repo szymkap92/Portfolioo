@@ -24,10 +24,22 @@ const translations = {
 		"skills.category.cybersecurity": "CyberSecurity",
 		"skills.kubernetes":
 			"Orkiestracja kontenerów, zarządzanie klastrami, skalowanie aplikacji",
+		"skills.terraform":
+			"Infrastructure as Code (IaC), automatyzacja infrastruktury, cloud provisioning",
+		"skills.gitops":
+			"Argo CD, Flux - zarządzanie deploymentami przez Git, continuous deployment",
 		"skills.wazuh":
 			"SIEM/SOAR platform do monitoringu bezpieczeństwa i analizy zagrożeń",
 		"skills.zabbix":
 			"Monitoring infrastruktury IT i aplikacji, alerting i metryki",
+		"skills.prometheus":
+			"System monitoringu i alertowania, metryki czasowe dla SOC",
+		"skills.grafana":
+			"Platforma wizualizacji danych, dashboardy bezpieczeństwa i analityka",
+		"skills.kali":
+			"Dystrybucja do testów penetracyjnych: rekonesans, exploity, raportowanie",
+		"skills.suricata":
+			"IDS/IPS - analiza ruchu i detekcja zagrożeń, reguły ET, integracja z Wazuh/ELK",
 		"skills.python":
 			"Programowanie w Pythonie, automatyzacja, skrypty bezpieczeństwa",
 		"skills.linux":
@@ -111,10 +123,22 @@ const translations = {
 		"skills.category.cybersecurity": "CyberSecurity",
 		"skills.kubernetes":
 			"Container orchestration, cluster management, application scaling",
+		"skills.terraform":
+			"Infrastructure as Code (IaC), infrastructure automation, cloud provisioning",
+		"skills.gitops":
+			"Argo CD, Flux - Git-driven deployment management, continuous deployment",
 		"skills.wazuh":
 			"SIEM/SOAR platform for security monitoring and threat analysis",
 		"skills.zabbix":
 			"IT infrastructure and application monitoring, alerting and metrics",
+		"skills.prometheus":
+			"Monitoring and alerting system, time series metrics for SOC",
+		"skills.grafana":
+			"Data visualization platform, security dashboards and analytics",
+		"skills.kali":
+			"Penetration testing distribution: reconnaissance, exploits, reporting",
+		"skills.suricata":
+			"IDS/IPS - traffic analysis and threat detection, ET rules, Wazuh/ELK integration",
 		"skills.python": "Python programming, automation, security scripts",
 		"skills.linux":
 			"Linux system administration, bash scripting, server configuration",
@@ -195,10 +219,22 @@ const translations = {
 		"skills.category.cybersecurity": "CyberSecurity",
 		"skills.kubernetes":
 			"Containerorchestrierung, Cluster-Management, Anwendungsskalierung",
+		"skills.terraform":
+			"Infrastructure as Code (IaC), Infrastruktur-Automatisierung, Cloud-Bereitstellung",
+		"skills.gitops":
+			"Argo CD, Flux - Git-gesteuerte Deployment-Verwaltung, kontinuierliche Bereitstellung",
 		"skills.wazuh":
 			"SIEM/SOAR-Plattform für Sicherheitsüberwachung und Bedrohungsanalyse",
 		"skills.zabbix":
 			"IT-Infrastruktur- und Anwendungsüberwachung, Benachrichtigungen und Metriken",
+		"skills.prometheus":
+			"Überwachungs- und Warnsystem, Zeitreihmetriken für SOC",
+		"skills.grafana":
+			"Datenvisualisierungsplattform, Sicherheitsdashboards und Analytik",
+		"skills.kali":
+			"Penetrationstests-Distribution: Aufklärung, Exploits, Berichterstattung",
+		"skills.suricata":
+			"IDS/IPS - Traffic-Analyse und Bedrohungserkennung, ET-Regeln, Wazuh/ELK-Integration",
 		"skills.python":
 			"Python-Programmierung, Automatisierung, Sicherheitsskripte",
 		"skills.linux":
@@ -282,10 +318,22 @@ const translations = {
 		"skills.category.cybersecurity": "CyberSecurity",
 		"skills.kubernetes":
 			"Orquestación de contenedores, gestión de clusters, escalado de aplicaciones",
+		"skills.terraform":
+			"Infrastructure as Code (IaC), automatización de infraestructura, aprovisionamiento cloud",
+		"skills.gitops":
+			"Argo CD, Flux - gestión de despliegues basada en Git, despliegue continuo",
 		"skills.wazuh":
 			"Plataforma SIEM/SOAR para monitoreo de seguridad y análisis de amenazas",
 		"skills.zabbix":
 			"Monitoreo de infraestructura IT y aplicaciones, alertas y métricas",
+		"skills.prometheus":
+			"Sistema de monitoreo y alertas, métricas de series de tiempo para SOC",
+		"skills.grafana":
+			"Plataforma de visualización de datos, dashboards de seguridad y analítica",
+		"skills.kali":
+			"Distribución para pruebas de penetración: reconocimiento, exploits, informes",
+		"skills.suricata":
+			"IDS/IPS - análisis de tráfico y detección de amenazas, reglas ET, integración Wazuh/ELK",
 		"skills.python":
 			"Programación en Python, automatización, scripts de seguridad",
 		"skills.linux":
