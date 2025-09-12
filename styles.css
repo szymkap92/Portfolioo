@@ -354,6 +354,20 @@ section {
     margin-bottom: 1rem;
 }
 
+.skill-item .skill-icon {
+    width: 4.5rem;
+    height: 4.5rem;
+    margin-bottom: 1rem;
+    object-fit: contain;
+}
+
+.skill-item .skill-icon[alt="Prometheus"],
+.skill-item .skill-icon[alt="Wazuh"],
+.skill-item .skill-icon[alt="Zabbix"] {
+    width: 8rem;
+    height: 8rem;
+}
+
 .skill-item h3 {
     margin-bottom: 1rem;
     color: var(--text-black);
